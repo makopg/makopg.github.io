@@ -6,9 +6,15 @@
 <style>
 body {
     margin: 40px;
+    background: #111;
+    color: #fff;
+    font: 14px/1.6 monospace;
+    transition: background .2s, color .2s;
+}
+
+body.light {
     background: #fff;
     color: #000;
-    font: 14px/1.6 monospace;
 }
 
 a {
@@ -17,12 +23,24 @@ a {
 
 hr {
     border: 0;
-    border-top: 1px solid #000;
+    border-top: 1px solid currentColor;
     margin: 12px 0;
+}
+
+button {
+    margin-bottom: 20px;
+    padding: 4px 8px;
+    font: inherit;
+    background: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    cursor: pointer;
 }
 </style>
 </head>
 <body>
+
+<button id="themeButton">Light mode</button>
 
 <p>hi, i'm <strong>partial</strong></p>
 <hr>
@@ -37,10 +55,11 @@ hr {
 <hr>
 
 <p>
-<a href="https://www.politicalcompass.org/analysis2?ec=-2.5&soc=-1.95">
+<a href="https://www.politicalcompass.org/analysis2?ec=-2.5&amp;soc=-1.95">
 political compass results (12/07/26)
 </a>
 </p>
+
 <hr>
 
 <p>owner @ mako &amp; pointg</p>
@@ -49,6 +68,18 @@ political compass results (12/07/26)
 <a href="https://mako.pointg.xyz">mako.pointg.xyz</a><br>
 <a href="https://www.pointg.xyz">pointg.xyz</a>
 </p>
+
+<script>
+const button = document.getElementById("themeButton");
+
+button.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+
+    button.textContent = document.body.classList.contains("light")
+        ? "go dark"
+        : "turn on the lights!!";
+});
+</script>
 
 </body>
 </html>
